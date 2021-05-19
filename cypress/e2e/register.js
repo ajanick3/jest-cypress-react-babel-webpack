@@ -1,10 +1,10 @@
 import { buildUser } from "../support/generate";
 
-describe('registrations', () => {
-  it('should register a new user', () => {
+describe(`registrations`, () => {
+  it(`should register a new user`, () => {
     const user = buildUser()
 
-    cy.visit('/')
+    cy.visit(`/`)
     cy.findByText(/register/i)
       .click()
     cy.findByLabelText(/username/i)
@@ -15,11 +15,11 @@ describe('registrations', () => {
       .click()
 
     cy.url()
-      .should('eq', `${Cypress.config().baseUrl}/`)
+      .should(`eq`, `${Cypress.config().baseUrl}/`)
     cy.window()
-      .its('localStorage.token')
-      .should('be.a', 'string')
-    cy.findByTestId('username-display')
-      .should('have.text', user.username)
+      .its(`localStorage.token`)
+      .should(`be.a`, `string`)
+    cy.findByTestId(`username-display`)
+      .should(`have.text`, user.username)
   });
 });
