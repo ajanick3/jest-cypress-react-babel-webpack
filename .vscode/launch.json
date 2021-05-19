@@ -11,8 +11,8 @@
       "type": "node-terminal"
     },
     {
-      "command": "test:e2e",
-      "name": "test:e2e",
+      "command": "npm run test:e2e",
+      "name": "npm run test:e2e",
       "request": "launch",
       "type": "node-terminal"
     },
