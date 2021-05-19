@@ -11,8 +11,8 @@
       "type": "node-terminal"
     },
     {
-      "command": "npx cypress open",
-      "name": "npx cypress open",
+      "command": "test:e2e",
+      "name": "test:e2e",
       "request": "launch",
       "type": "node-terminal"
     },
