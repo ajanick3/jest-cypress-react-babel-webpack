@@ -6,6 +6,7 @@ module.exports = {
     'kentcdodds/import',
     'kentcdodds/jest',
     'kentcdodds/react',
+    'plugins:cypress/recommended',
   ],
   overrides: [
     {
