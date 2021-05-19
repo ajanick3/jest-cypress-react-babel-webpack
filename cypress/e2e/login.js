@@ -1,25 +1,15 @@
-import {buildUser} from '../support/generate'
-
 describe(`login`, () => {
   it(`should log in an existing user`, () => {
-    const user = buildUser()
-
-    // register new user before login
-    cy.request({
-      url: 'http://localhost:3000/register',
-      method: 'POST',
-      body: user,
+    cy.createUser().then((user) => {
+      cy.visit(`/`)
+      cy.findByText(/log.?in/i).click() // "log in" or "login"
+      cy.findByLabelText(/username/i).type(user.username)
+      cy.findByLabelText(/password/i).type(user.password)
+      cy.findByText(/submit/i).click()
+      cy.url().should(`eq`, `${Cypress.config().baseUrl}/`)
+      cy.window().its(`localStorage.token`).should(`be.a`, `string`)
+      cy.findByTestId(`username-display`).should(`have.text`, user.username)
     })
-
-    cy.visit(`/`)
-    cy.findByText(/log.?in/i).click() // "log in" or "login"
-    cy.findByLabelText(/username/i).type(user.username)
-    cy.findByLabelText(/password/i).type(user.password)
-    cy.findByText(/submit/i).click()
-
-    cy.url().should(`eq`, `${Cypress.config().baseUrl}/`)
-    cy.window().its(`localStorage.token`).should(`be.a`, `string`)
-    cy.findByTestId(`username-display`).should(`have.text`, user.username)
   })
 
   it(`should show an error message if there's an error registering`, () => {
