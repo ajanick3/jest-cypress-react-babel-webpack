@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {ThemeProvider} from 'emotion-theming'
-import {Link} from '@reach/router'
+import { ThemeProvider } from 'emotion-theming'
+import { Link } from '@reach/router'
 import Calculator from './calculator'
 import * as themes from './themes'
 
-function App({user, logout}) {
+function App({ user, logout }) {
   const [theme, setTheme] = React.useState('dark')
-  const handleThemeChange = ({target: {value}}) => setTheme(value)
+  const handleThemeChange = ({ target: { value } }) => setTheme(value)
   return (
     <ThemeProvider theme={themes[theme]}>
       <Calculator />
-      <div style={{marginTop: 30}}>
+      <div style={{ marginTop: 30 }}>
         <fieldset>
           <legend>Theme</legend>
           <label>
@@ -45,9 +45,14 @@ function App({user, logout}) {
         }}
       >
         {user ? (
-          <button type="button" onClick={logout}>
-            Logout
-          </button>
+          <>
+            <div data-testid='username-display'>
+              {user.username}
+            </div>
+            <button type="button" onClick={logout}>
+              Logout
+            </button>
+          </>
         ) : (
           <>
             <Link to="/register">Register</Link>
@@ -55,7 +60,7 @@ function App({user, logout}) {
           </>
         )}
       </div>
-      <div style={{marginTop: 30, textAlign: 'center'}}>
+      <div style={{ marginTop: 30, textAlign: 'center' }}>
         Calculator component{' '}
         <a href="https://codepen.io/mjijackson/pen/xOzyGX">created</a>
         {' by '}
