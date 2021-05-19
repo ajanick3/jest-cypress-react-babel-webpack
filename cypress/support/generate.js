@@ -1,8 +1,8 @@
-import { build, fake } from 'test-data-bot'
+import {build, fake} from 'test-data-bot'
 
 const buildUser = build(`User`).fields({
-  username: fake(f => f.internet.userName()),
-  password: fake(f => f.internet.password()),
+  username: fake((f) => f.internet.userName()),
+  password: fake((f) => f.internet.password()),
 })
 
-export { buildUser }
+export {buildUser}
