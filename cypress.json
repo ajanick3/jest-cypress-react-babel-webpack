@@ -1,3 +1,5 @@
 {
-  "projectId": "n514kj"
+  "projectId": "n514kj",
+  "baseUrl": "http://localhost:8080",
+  "integrationFolder": "cypress/e2e"
 }
