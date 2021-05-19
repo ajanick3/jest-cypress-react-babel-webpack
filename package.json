@@ -46,6 +46,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-dynamic-import-node": "^2.3.0",
     "css-loader": "^3.0.0",
+    "cypress": "^7.3.0",
     "eslint": "^6.0.1",
     "eslint-config-kentcdodds": "^14.3.3",
     "eslint-import-resolver-jest": "^2.1.2",
