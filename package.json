@@ -40,6 +40,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/runtime": "^7.5.1",
     "@emotion/babel-preset-css-prop": "^10.0.14",
+    "@testing-library/cypress": "^7.0.6",
     "@testing-library/jest-dom": "^4.0.0",
     "@testing-library/react": "^8.0.4",
     "babel-loader": "^8.0.6",
