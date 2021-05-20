@@ -1,15 +1,12 @@
-import {buildUser} from '../support/generate'
-
-describe(`registrations`, () => {
+describe(`registration`, () => {
   it(`should register a new user`, () => {
-    const user = buildUser()
-
-    cy.visit(`/`)
-    cy.findByText(/register/i).click()
-    cy.enterCreds(user)
-
-    cy.assertHome()
-    cy.assertLoggedInAs(user)
+    cy.createUser().then((user) => {
+      cy.visit(`/`)
+      cy.findByText(/register/i).click()
+      cy.enterCreds(user)
+      cy.assertHome()
+      cy.assertLoggedInAs(user)
+    })
   })
 
   it(`should show an error message if there's an error registering`, () => {
