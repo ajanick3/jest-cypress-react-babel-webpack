@@ -5,7 +5,15 @@ describe('anonymous calculator', () => {
     cy.findByText(/^\+$/).click()
     cy.findByText(/^2$/).click()
     cy.findByText(/^=$/).click()
-    cy.findByTestId('total')
-      .should('have.text', '3')
+    cy.findByTestId('total').should('have.text', '3')
+  })
+
+  it('displays the username', () => {
+    cy.loginAsNewUser().then((user) => {
+      cy.visit('/')
+      cy.findByTestId(`username-display`).should(`have.text`, user.username)
+      cy.findByText(/logout/i).click()
+      cy.findByTestId(`username-display`).should(`not.exist`)
+    })
   })
 })

@@ -47,3 +47,19 @@ Cypress.Commands.add('enterCreds', (user) => {
   cy.findByLabelText(/password/i).type(user.password)
   cy.findByText(/submit/i).click()
 })
+Cypress.Commands.add('login', (user) => {
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:3000/login',
+    body: user,
+  }).then((response) => {
+    window.localStorage.setItem('token', response.body.user.token)
+    return {...response.body.user, ...user}
+  })
+})
+
+Cypress.Commands.add('loginAsNewUser', (user) => {
+  cy.createUser().then((user) => {
+    cy.login(user)
+  })
+})
