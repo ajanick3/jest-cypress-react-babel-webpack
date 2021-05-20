@@ -33,3 +33,17 @@ Cypress.Commands.add('createUser', (overrides) => {
     body: user,
   }).then((response) => ({...response.body.user, ...user}))
 })
+Cypress.Commands.add('assertHome', () => {
+  cy.url().should(`eq`, `${Cypress.config().baseUrl}/`)
+})
+
+Cypress.Commands.add('assertLoggedInAs', (user) => {
+  cy.window().its(`localStorage.token`).should(`be.a`, `string`)
+  cy.findByTestId(`username-display`).should(`have.text`, user.username)
+})
+
+Cypress.Commands.add('enterCreds', (user) => {
+  cy.findByLabelText(/username/i).type(user.username)
+  cy.findByLabelText(/password/i).type(user.password)
+  cy.findByText(/submit/i).click()
+})
